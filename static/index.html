@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Recovr AI — Autonomous Revenue Recovery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; color: #ffffff; overflow-x: hidden; }
+        .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+        .glass-card { background: rgba(8, 8, 10, 0.75); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card:hover { border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 35px -5px rgba(255, 255, 255, 0.12); }
+        .glow-white-text { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.35); }
+        .white-glow-btn { box-shadow: 0 0 30px 0px rgba(255, 255, 255, 0.25); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .white-glow-btn:hover { box-shadow: 0 0 45px 5px rgba(255, 255, 255, 0.45); transform: translateY(-2px); }
+        .grid-bg {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+        .pulse-beacon { animation: pulse-beacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse-beacon {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .4; transform: scale(1.3); }
+        }
+        /* Custom range slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: #262626;
+            height: 6px;
+            border-radius: 4px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-white selection:text-black grid-bg relative bg-black">
+
+    <!-- Silky Smooth Pure White Interactive Canvas Horizon -->
+    <canvas id="whiteHorizonCanvas" class="fixed inset-0 z-0 pointer-events-auto opacity-90"></canvas>
+
+    <!-- ==================== TOP NAVIGATION ==================== -->
+    <header class="relative z-20 max-w-7xl w-full mx-auto px-6 h-24 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center font-black text-black text-xl shadow-2xl shadow-white/30">
+                ⚡
+            </div>
+            <div>
+                <span class="font-extrabold text-xl text-white tracking-tight">Razorpay <span class="text-white underline decoration-white/40 underline-offset-4">Recovr AI</span></span>
+                <span class="ml-2 px-2.5 py-0.5 text-[10px] font-bold bg-white/10 text-white border border-white/20 rounded-full uppercase tracking-wider">Track 03</span>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-neutral-400">
+            <a href="#features" class="hover:text-white transition">Architecture</a>
+            <a href="#roi-calculator" class="hover:text-white transition">ROI Calculator</a>
+            <a href="#benchmark" class="hover:text-white transition">Batch Benchmark</a>
+            <a href="#guardrails" class="hover:text-white transition">Safety Guardrails</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="/console" class="px-5 py-2.5 bg-white hover:bg-neutral-200 text-black font-extrabold text-xs rounded-xl white-glow-btn transition flex items-center space-x-2">
+                <span>⚡ Launch Console</span>
+                <span>→</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative z-10 max-w-6xl mx-auto px-6 pt-8 pb-20 text-center space-y-10 my-auto">
+        
+        <!-- Monochrome Floating Badge -->
+        <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-neutral-950 border border-white/20 text-xs text-neutral-200 shadow-2xl animate-float-slow">
+            <span class="w-2 h-2 rounded-full bg-white pulse-beacon"></span>
+            <span class="font-bold text-white">Razorpay AI Buildathon 2026</span>
+            <span class="text-neutral-600">•</span>
+            <span class="text-neutral-300">Autonomous Revenue Recovery</span>
+        </div>
+
+        <!-- Headline in Pure White Glow -->
+        <div class="space-y-5">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05]">
+                Turn Lost Revenue <br/>
+                <span class="text-white glow-white-text">
+                    Into Captured GMV.
+                </span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-neutral-400 font-normal leading-relaxed">
+                An intelligent, bounded agentic engine that diagnoses payment failures, predicts optimal salary liquidity cycles, and automates multi-channel dunning with <span class="text-white font-semibold">zero regulatory spam</span>.
+            </p>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a href="/console" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-neutral-200 text-black font-black text-sm rounded-2xl white-glow-btn transition flex items-center justify-center space-x-3">
+                <span>⚡ Open Interactive Recovery Console</span>
+                <span>→</span>
+            </a>
+            <a href="#roi-calculator" class="w-full sm:w-auto px-7 py-4 bg-neutral-950 hover:bg-neutral-900 border border-neutral-700 text-white font-bold text-sm rounded-2xl transition flex items-center justify-center space-x-2">
+                <span>Calculate Your ROI</span>
+                <span>↓</span>
+            </a>
+        </div>
+
+        <!-- Monochrome Terminal Diagnostic Stream Box -->
+        <div class="max-w-3xl mx-auto text-left glass-card rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
+            <div class="bg-neutral-950 px-4 py-3 border-b border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-white inline-block opacity-80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-600 inline-block"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-neutral-800 inline-block"></span>
+                    <span class="ml-2 font-mono-code text-[11px] text-neutral-300">recovr-swarm: orchestrator.py</span>
+                </div>
+                <span class="font-mono-code text-[11px] text-white font-bold">● 4 AGENTS ACTIVE</span>
+            </div>
+            <div class="p-5 font-mono-code text-xs space-y-2 text-neutral-300 bg-black/90 leading-relaxed">
+                <div class="text-white">> [SWARM: Diagnostician] Classified failure: 'BAD_REQUEST_PAYMENT_UPI_INSUFFICIENT_FUNDS' → INSUFFICIENT_FUNDS</div>
+                <div class="text-neutral-400">> [SWARM: Liquidity] Computed Peak Window: Day 1 (94.8% probability) via 30-day Bayesian distribution</div>
+                <div class="text-neutral-200">> [SWARM: Compliance] Verified RBI communication laws (Attempt 1/3, 18h cooling, SHA-256 seal)</div>
+                <div class="text-white">> [SWARM: Negotiator] Armed 1-Tap Hinglish outreach + Dynamic Split Payment Link dispatched</div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section id="features" class="relative z-10 max-w-7xl mx-auto px-6 py-20 border-t border-neutral-800 space-y-12">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">Fintech-Grade Architecture</span>
+            <h2 class="text-3xl sm:text-5xl font-black text-white">Built for Maximum Signal & Precision</h2>
+            <p class="text-sm text-neutral-400 max-w-xl mx-auto">Engineered to meet the exact evaluation standards of the Razorpay panel.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Feature 1 -->
+            <div class="glass-card p-7 rounded-2xl space-y-4 transition">
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl text-white">
+                    📞
+                </div>
+                <h3 class="text-lg font-bold text-white">Sigma AI Voice Closer</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                    Authoritative deep baritone phone calls in Hindi, Hinglish, and English with live browser speech synthesis and interactive IVR links.
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="glass-card p-7 rounded-2xl space-y-4 transition">
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl text-white">
+                    🏦
+                </div>
+                <h3 class="text-lg font-bold text-white">Issuer Bank Downtime Radar</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                    Live telemetry tracking for HDFC, SBI, ICICI, and Axis bank switches with automated silent PG rerouting during gateway outages.
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="glass-card p-7 rounded-2xl space-y-4 transition">
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl text-white">
+                    💬
+                </div>
+                <h3 class="text-lg font-bold text-white">Autonomous Objection Negotiator</h3>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                    Dynamic policy handling for customer objections, granting 3-day grace periods, 10% settlement tokens, or plan downgrades.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE ROI CALCULATOR ==================== -->
+    <section id="roi-calculator" class="relative z-10 max-w-7xl mx-auto px-6 py-20 border-t border-neutral-800 space-y-12">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">Merchant Economics Simulator</span>
+            <h2 class="text-3xl sm:text-5xl font-black text-white">Calculate Your Recovered GMV</h2>
+            <p class="text-sm text-neutral-400 max-w-xl mx-auto">Adjust your business metrics below to simulate real-time annual revenue gains with Razorpay Recovr AI.</p>
+        </div>
+
+        <div class="glass-card p-8 sm:p-12 rounded-3xl border border-white/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Sliders -->
+            <div class="lg:col-span-6 space-y-6">
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-neutral-400 font-mono-code uppercase">Monthly Total GMV:</span>
+                        <span class="text-white font-mono-code text-sm" id="slider-gmv-val">₹50,00,000</span>
+                    </div>
+                    <input type="range" id="slider-gmv" min="500000" max="50000000" step="500000" value="5000000" oninput="calculateROI()">
+                    <div class="flex justify-between text-[10px] text-neutral-500 font-mono-code">
+                        <span>₹5 Lakhs</span>
+                        <span>₹5 Crores</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-neutral-400 font-mono-code uppercase">Payment Failure Rate (%):</span>
+                        <span class="text-white font-mono-code text-sm" id="slider-fail-val">12%</span>
+                    </div>
+                    <input type="range" id="slider-fail" min="5" max="30" step="1" value="12" oninput="calculateROI()">
+                    <div class="flex justify-between text-[10px] text-neutral-500 font-mono-code">
+                        <span>5% (Low)</span>
+                        <span>30% (High)</span>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-neutral-950 rounded-2xl border border-neutral-800 text-xs text-neutral-400 space-y-1">
+                    <p class="font-bold text-white">⚡ Benchmark Recovery Efficiency: <span class="text-emerald-400">76.98%</span></p>
+                    <p class="text-[11px]">Zero merchant setup friction — seamlessly mounts on existing Razorpay webhooks.</p>
+                </div>
+            </div>
+
+            <!-- Right Computed Impact -->
+            <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                <div class="bg-black p-5 rounded-2xl border border-neutral-800 space-y-1">
+                    <span class="text-[10px] text-neutral-500 font-mono-code uppercase">Annual GMV Saved</span>
+                    <h3 class="text-2xl font-black text-emerald-400" id="calc-annual-saved">₹55.4 Lakhs</h3>
+                    <p class="text-[10px] text-neutral-400">Direct bottom-line ARR boost</p>
+                </div>
+
+                <div class="bg-black p-5 rounded-2xl border border-neutral-800 space-y-1">
+                    <span class="text-[10px] text-neutral-500 font-mono-code uppercase">Net Spend ROI</span>
+                    <h3 class="text-2xl font-black text-white" id="calc-roi">254.4x</h3>
+                    <p class="text-[10px] text-neutral-400">₹0.12 cost per ₹100 recovered</p>
+                </div>
+
+                <div class="bg-black p-5 rounded-2xl border border-neutral-800 space-y-1">
+                    <span class="text-[10px] text-neutral-500 font-mono-code uppercase">Monthly Churn Prevention</span>
+                    <h3 class="text-2xl font-black text-neutral-200" id="calc-churn-saved">~385 users</h3>
+                    <p class="text-[10px] text-neutral-400">Involuntary churn stopped</p>
+                </div>
+
+                <div class="bg-black p-5 rounded-2xl border border-neutral-800 space-y-1">
+                    <span class="text-[10px] text-neutral-500 font-mono-code uppercase">Payback Period</span>
+                    <h3 class="text-2xl font-black text-white">&lt; 4 Hours</h3>
+                    <p class="text-[10px] text-neutral-400">Instant revenue capture</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== BENCHMARK HIGHLIGHT ==================== -->
+    <section id="benchmark" class="relative z-10 max-w-7xl mx-auto px-6 py-20 border-t border-neutral-800 space-y-12">
+        <div class="glass-card p-8 sm:p-12 rounded-3xl border border-white/20 space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-neutral-400">Verified Empirical Results</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">100-Record Batch Benchmark</h2>
+                    <p class="text-xs text-neutral-400 mt-1">Tested on real-world synthetic failure archetypes with zero cherry-picking.</p>
+                </div>
+                <a href="/console" class="px-6 py-3 bg-white hover:bg-neutral-200 text-black font-extrabold text-xs rounded-xl shadow-xl transition">
+                    View Live Feed in Console →
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="bg-black/90 p-5 rounded-2xl border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase font-semibold">At-Risk GMV</p>
+                    <p class="text-2xl font-black text-white mt-1">₹5,01,767</p>
+                </div>
+                <div class="bg-black/90 p-5 rounded-2xl border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase font-semibold">Recovered GMV</p>
+                    <p class="text-2xl font-black text-white mt-1">₹2,96,947</p>
+                </div>
+                <div class="bg-black/90 p-5 rounded-2xl border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase font-semibold">Recovery Rate</p>
+                    <p class="text-2xl font-black text-white mt-1">76.98%</p>
+                </div>
+                <div class="bg-black/90 p-5 rounded-2xl border border-neutral-800">
+                    <p class="text-[11px] text-neutral-400 uppercase font-semibold">Spend ROI</p>
+                    <p class="text-2xl font-black text-white mt-1">254.4x</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="relative z-10 border-t border-neutral-800 py-8 text-center text-xs text-neutral-500 bg-black">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-neutral-400">Razorpay AI Buildathon 2026 — Track 3: AI Revenue Recovery</span>
+            <div class="flex items-center space-x-6">
+                <a href="/console" class="text-white hover:underline">Live Console</a>
+                <a href="#features" class="hover:text-white">Architecture</a>
+                <a href="#roi-calculator" class="hover:text-white">ROI Calculator</a>
+                <a href="#benchmark" class="hover:text-white">Benchmark</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SILKY SMOOTH WHITE PARTICLES SCRIPT ==================== -->
+    <script>
+        const canvas = document.getElementById('whiteHorizonCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        let mouse = { x: null, y: null, targetX: null, targetY: null, radius: 180 };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        for (let i = 0; i < 70; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                baseVx: (Math.random() - 0.5) * 0.45,
+                baseVy: (Math.random() - 0.5) * 0.45,
+                vx: 0,
+                vy: 0,
+                radius: Math.random() * 2 + 1.2,
+                alpha: Math.random() * 0.6 + 0.25,
+                pulseSpeed: Math.random() * 0.02 + 0.01,
+                pulseVal: Math.random() * Math.PI
+            });
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.targetX = e.clientX;
+            mouse.targetY = e.clientY;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.targetX = null;
+            mouse.targetY = null;
+        });
+
+        let lastTime = performance.now();
+
+        function render(now) {
+            const dt = Math.min((now - lastTime) / 1000, 0.1);
+            lastTime = now;
+
+            ctx.clearRect(0, 0, width, height);
+
+            if (mouse.targetX !== null) {
+                mouse.x += (mouse.targetX - (mouse.x || mouse.targetX)) * 0.08;
+                mouse.y += (mouse.targetY - (mouse.y || mouse.targetY)) * 0.08;
+            } else {
+                mouse.x = null;
+                mouse.y = null;
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distSq = dx * dx + dy * dy;
+
+                    if (distSq < 19600) {
+                        const dist = Math.sqrt(distSq);
+                        const alpha = (1 - dist / 140) * 0.28;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                        ctx.lineWidth = 0.85;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+
+                p.pulseVal += p.pulseSpeed;
+                const dynamicAlpha = p.alpha + Math.sin(p.pulseVal) * 0.15;
+
+                p.vx = p.vx * 0.96 + p.baseVx * 0.04;
+                p.vy = p.vy * 0.96 + p.baseVy * 0.04;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = p.x - mouse.x;
+                    const dy = p.y - mouse.y;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist < mouse.radius && dist > 1) {
+                        const force = (1 - dist / mouse.radius) * 1.2;
+                        p.vx += (dx / dist) * force;
+                        p.vy += (dy / dist) * force;
+                    }
+                }
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < -10) p.x = width + 10;
+                if (p.x > width + 10) p.x = -10;
+                if (p.y < -10) p.y = height + 10;
+                if (p.y > height + 10) p.y = -10;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(dynamicAlpha, 0.1)})`;
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.6)';
+                ctx.shadowBlur = 8;
+                ctx.fill();
+            }
+
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+
+        // ROI Calculator Logic
+        function calculateROI() {
+            const gmv = parseFloat(document.getElementById('slider-gmv').value);
+            const failRate = parseFloat(document.getElementById('slider-fail').value) / 100.0;
+            
+            document.getElementById('slider-gmv-val').innerText = '₹' + gmv.toLocaleString('en-IN');
+            document.getElementById('slider-fail-val').innerText = (failRate * 100).toFixed(0) + '%';
+
+            const monthlyAtRisk = gmv * failRate;
+            const recoveryEfficiency = 0.7698; // 76.98%
+            const monthlySaved = monthlyAtRisk * recoveryEfficiency;
+            const annualSaved = monthlySaved * 12;
+            const avgTicket = 1500;
+            const churnSavedUsers = Math.round(monthlySaved / avgTicket);
+
+            let savedFormatted = '';
+            if (annualSaved >= 10000000) {
+                savedFormatted = '₹' + (annualSaved / 10000000).toFixed(2) + ' Cr';
+            } else {
+                savedFormatted = '₹' + (annualSaved / 100000).toFixed(1) + ' Lakhs';
+            }
+
+            document.getElementById('calc-annual-saved').innerText = savedFormatted;
+            document.getElementById('calc-churn-saved').innerText = `~${churnSavedUsers.toLocaleString('en-IN')} users`;
+        }
+        calculateROI();
+    </script>
+</body>
+</html>

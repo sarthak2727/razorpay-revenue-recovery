@@ -1,0 +1,106 @@
+{
+  "total_records": 100,
+  "total_at_risk_gmv_inr": 501767.0,
+  "total_recovered_gmv_inr": 296947.0,
+  "recovery_rate_percentage": 59.18,
+  "recoverable_recovery_rate_percentage": 76.98,
+  "recovered_count": 73,
+  "halted_fraud_count": 7,
+  "compliance_violations": 0,
+  "total_recovery_cost_inr": 1162.5,
+  "net_roi_multiplier": 254.44,
+  "root_cause_breakdown": {
+    "AUTHENTICATION_FAILED": {
+      "count": 21,
+      "at_risk_gmv": 79494.0,
+      "recovered_gmv": 64044.0,
+      "recovered_count": 17,
+      "strategy": "CONVERSATIONAL_HINGLISH_DUNNING"
+    },
+    "INSUFFICIENT_FUNDS": {
+      "count": 22,
+      "at_risk_gmv": 94500.0,
+      "recovered_gmv": 71800.0,
+      "recovered_count": 19,
+      "strategy": "SALARY_ALIGNED_MANDATE_RETRY"
+    },
+    "GATEWAY_OR_BANK_DOWNTIME": {
+      "count": 24,
+      "at_risk_gmv": 118886.0,
+      "recovered_gmv": 94586.0,
+      "recovered_count": 20,
+      "strategy": "SILENT_SMART_RETRY"
+    },
+    "EXPIRED_INSTRUMENT": {
+      "count": 12,
+      "at_risk_gmv": 71998.0,
+      "recovered_gmv": 50148.0,
+      "recovered_count": 8,
+      "strategy": "DYNAMIC_PAYMENT_LINK"
+    },
+    "FRAUD_RISK_FLAGGED": {
+      "count": 7,
+      "at_risk_gmv": 116000.0,
+      "recovered_gmv": 0.0,
+      "recovered_count": 0,
+      "strategy": "COMPLIANT_TERMINATION"
+    },
+    "CART_ABANDONMENT": {
+      "count": 13,
+      "at_risk_gmv": 14389.0,
+      "recovered_gmv": 9869.0,
+      "recovered_count": 8,
+      "strategy": "CONVERSATIONAL_HINGLISH_DUNNING"
+    },
+    "MANDATE_DEBIT_DECLINE": {
+      "count": 1,
+      "at_risk_gmv": 6500.0,
+      "recovered_gmv": 6500.0,
+      "recovered_count": 1,
+      "strategy": "SALARY_ALIGNED_MANDATE_RETRY"
+    }
+  },
+  "exceptions_count": 27,
+  "sample_exceptions": [
+    {
+      "incident_id": "inc_d34b098125",
+      "customer": "Siddharth Rao",
+      "amount": 12500.0,
+      "root_cause": "FRAUD_RISK_FLAGGED",
+      "status": "HALTED_BY_GUARDRAIL",
+      "reason": "Suspicious activity detected. Dunning halted to prevent fraud risk."
+    },
+    {
+      "incident_id": "inc_6e44225c2f",
+      "customer": "Shreya Ghoshal",
+      "amount": 550.0,
+      "root_cause": "CART_ABANDONMENT",
+      "status": "UNRECOVERED_MAX_RETRIES",
+      "reason": "Customer did not complete payment after 1 compliant touchpoints."
+    },
+    {
+      "incident_id": "inc_9332d51ae9",
+      "customer": "Amit Trivedi",
+      "amount": 18500.0,
+      "root_cause": "FRAUD_RISK_FLAGGED",
+      "status": "HALTED_BY_GUARDRAIL",
+      "reason": "Suspicious activity detected. Dunning halted to prevent fraud risk."
+    },
+    {
+      "incident_id": "inc_a539fbefe8",
+      "customer": "Ashish Chanchlani",
+      "amount": 14500.0,
+      "root_cause": "FRAUD_RISK_FLAGGED",
+      "status": "HALTED_BY_GUARDRAIL",
+      "reason": "Suspicious activity detected. Dunning halted to prevent fraud risk."
+    },
+    {
+      "incident_id": "inc_6bb0d9c3bc",
+      "customer": "Srishti Dixit",
+      "amount": 1250.0,
+      "root_cause": "EXPIRED_INSTRUMENT",
+      "status": "UNRECOVERED_MAX_RETRIES",
+      "reason": "Customer did not complete payment after 1 compliant touchpoints."
+    }
+  ]
+}
